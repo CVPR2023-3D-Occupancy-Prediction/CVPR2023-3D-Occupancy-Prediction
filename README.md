@@ -47,9 +47,11 @@ Leaderboard ranking for this challenge is by the intersection-over-union (mIoU) 
 ### mIoU
 
 Let $C$ be he number of classes. 
+
 $$
     mIoU=\frac{1}{C}\displaystyle \sum_{c=1}^{C}\frac{TP_c}{TP_c+FP_c+FN_c},
 $$
+
 where $TP_c$ , $FP_c$ , and $FN_c$ correspond to the number of true positive, false positive, and false negative predictions for class $c_i$.
 
 ### F1 Score
@@ -58,8 +60,9 @@ We also measure the F-score as the harmonic mean of the completeness $P_c$ and t
 Accuracy: Percentage of predicted voxels that are within a distance threshold to the ground truth voxels.
 
 Completeness: Percentage of ground truth voxels that are within a distance threshold to the predicted voxels.
+
 $$
-    F-score=（ \frac{P_a^{-1}+P_c^{-1}}{2} )^{-1} 
+    F-score=\left( \frac{P_a^{-1}+P_c^{-1}}{2} \right) ^{-1} 
 $$
 
 
