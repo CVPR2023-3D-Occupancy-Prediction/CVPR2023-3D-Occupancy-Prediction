@@ -14,20 +14,26 @@
 **[English](./README.md) | [中文](./README-zh-hans.md)**
 
 
-<!-- <img src="./imgs/poster.gif" width="696px"> -->
+<img src="./figs/occupanc_1.gif" width="696px">
 
 </div>
 
 ## Table of Contents
-- [Highlight](#highlight---why-we-are-exclusive)
-- [Task](#task)
-- [News](#news)
-- [Data](#data)
-- [Devkit](#devkit)
-- [Get Started](#get-started)
-- [Benchmark and Leaderboard](#benchmark-and-leaderboard-to-be-released)
-- [Citation](#citation)
-- [License](#license)
+- [CVPR 2023 Occupancy Prediction Challenge](#cvpr-2023-occupancy-prediction-challenge)
+  - [Table of Contents](#table-of-contents)
+  - [Highlight](#highlight)
+  - [Task](#task)
+    - [Definition](#definition)
+    - [Input](#input)
+    - [Output](#output)
+    - [Metrics](#metrics)
+  - [News](#news)
+  - [Data](#data)
+  - [Devkit](#devkit)
+  - [Get Started](#get-started)
+  - [Benchmark and Leaderboard (To be released)](#benchmark-and-leaderboard-to-be-released)
+  - [Citation](#citation)
+  - [License](#license)
 
 ## Highlight
 
