@@ -32,7 +32,6 @@
   - [Devkit](#devkit)
   - [Get Started](#get-started)
   - [Benchmark and Leaderboard (To be released)](#benchmark-and-leaderboard-to-be-released)
-  - [Citation](#citation)
   - [License](#license)
 
 ## Highlight
@@ -85,16 +84,7 @@ Please stay tuned for the release of the benchmark.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Citation
-Our dataset is built on top of the [nuScenes](https://www.nuscenes.org/nuscenes) datasets. Please cite:
 
-```bibtex
-@article{ nuscenes2019,
-  author = {Holger Caesar and Varun Bankiti and Alex H. Lang and Sourabh Vora and Venice Erin Liong and Qiang Xu and Anush Krishnan and Yu Pan and Giancarlo Baldan and Oscar Beijbom},
-  title = {nuScenes: A multimodal dataset for autonomous driving},
-  journal = {arXiv preprint arXiv:1903.11027},
-  year = {2019}
-}
 
 ```
 
