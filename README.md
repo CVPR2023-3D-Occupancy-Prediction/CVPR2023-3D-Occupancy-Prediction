@@ -23,15 +23,11 @@
   - [Table of Contents](#table-of-contents)
   - [Highlight](#highlight)
   - [Task](#task)
-    - [Definition](#definition)
-    - [Input](#input)
-    - [Output](#output)
-    - [Metrics](#metrics)
-  - [News](#news)
+  - [Metrics](#metrics)
+  - [Timeline](#eimeline)
   - [Data](#data)
   - [Devkit](#devkit)
-  - [Get Started](#get-started)
-  - [Benchmark and Leaderboard (To be released)](#benchmark-and-leaderboard-to-be-released)
+  - [Benchmark and Leaderboard (To be released)](#leaderboard)
   - [License](#license)
 
 ## Highlight
@@ -43,50 +39,56 @@ Understanding the 3D surroundings including the background and foreground object
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Task
+Given images from multiple cameras, one has to predict the current occupancy state and semantics of each voxel grid in the scene. The voxel state(free or occupied) is needed to be predicted first. If a voxel is occupied, its semantic need to be predicted. Besides, we also provide an known/unkown mask for each scene. The unkown voxel is  is defined as invisible grid in camera, which is igored on the evaluation.
 
-### Definition
 
-### Input
+## Metrics
+Leaderboard ranking for this challenge is by the intersection-over-union (mIoU) over all classes. 
+### mIoU
 
-### Output
+Let $C$ be he number of classes. 
+$$
+    mIoU=\frac{1}{C}\displaystyle \sum_{c=1}^{C}\frac{TP_c}{TP_c+FP_c+FN_c},
+$$
+where $TP_c$ , $FP_c$ , and $FN_c$ correspond to the number of true positive, false positive, and false negative predictions for class $c_i$.
 
-### Metrics
+### F1 Score
+We also measure the F-score as the harmonic mean of the completeness $P_c$ and the accuracy $P_a$.
 
+Accuracy: Percentage of predicted voxels that are within a distance threshold to the ground truth voxels.
+
+Completeness: Percentage of ground truth voxels that are within a distance threshold to the predicted voxels.
+$$
+    F-score=（ \frac{P_a^{-1}+P_c^{-1}}{2} )^{-1} 
+$$
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## News
-- [2023/02/15]
-  * Dataset `v0.1`: Initial Training and validation dataset sample will be released.
-  * Devkit `v0.1.0`: Initial devkit will be released.
-
+## Timeline
+- Feb 15, 2023 - Dataset and Devkit Release.
+- Mar 16, 2023 - Challenge Period Open.
+- May 27, 2023 - Challenge Period End.
+- May 29, 2023 - Finalist Notification.
+- Jun 10, 2023 - Technical Report Deadline.
+- Jun 12, 2023 - Winner Announcement.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Data
 
+To be released.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Devkit
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-## Get Started
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-## Benchmark and Leaderboard (To be released)
-We will provide an initial benchmark on the dataset, and you are welcome to add your work here!
-Please stay tuned for the release of the benchmark.
-
-
+To be released.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
-```
+## Leaderboard 
+To be released.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
