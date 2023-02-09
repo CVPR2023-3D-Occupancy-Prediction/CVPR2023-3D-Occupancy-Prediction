@@ -27,19 +27,19 @@
   - [Timeline](#eimeline)
   - [Data](#data)
   - [Devkit](#devkit)
-  - [Benchmark and Leaderboard (To be released)](#leaderboard)
+  - [Leaderboard](#leaderboard)
   - [License](#license)
 
 ## Highlight
 
 
-Understanding the 3D surroundings including the background and foreground object is important for autonomous driving, which can be applied for perception and planning. In the traditional 3D object detection task, the foreground object is represented by the 3D bounding box. However, the geometrical shape of the object is complex, which can not be represented by a simple 3D box, and the perception of background is absent. The goal of this task is to predict the 3D occupancy of the complete scene. In this task, we provide a large-scale occupancy benchmark based on the nuScenes dataset. The benchmark is a voxelized representation of the 3D space, and the occupancy state and semantics of voxel in 3D space are jointly estimated in this task. The complexity of this task lies in the dense prediction of 3D space given the input of image.
+Understanding the 3D surroundings including the background and foreground objects is important for autonomous driving, which can be applied for perception and planning. In the traditional 3D object detection task, the foreground object is represented by the 3D bounding box. However, the geometrical shape of the object is complex, which can not be represented by a simple 3D box, and the perception of the background is absent. The goal of this task is to predict the 3D occupancy of the complete scene. In this task, we provide a large-scale occupancy benchmark based on the nuScenes dataset. The benchmark is a voxelized representation of the 3D space, and the occupancy state and semantics of the voxel in 3D space are jointly estimated in this task. The complexity of this task lies in the dense prediction of 3D space given the input of the image.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Task
-Given images from multiple cameras, one has to predict the current occupancy state and semantics of each voxel grid in the scene. The voxel state(free or occupied) is needed to be predicted first. If a voxel is occupied, its semantic need to be predicted. Besides, we also provide an known/unkown mask for each scene. The unkown voxel is  is defined as invisible grid in camera, which is igored on the evaluation.
+Given images from multiple cameras, one has to predict the current occupancy state and semantics of each voxel grid in the scene. The voxel state (free or occupied) is needed to be predicted first. If a voxel is occupied, its semantics need to be predicted. Besides, we also provide a known/unknown mask for each scene. The unknown voxel is defined as an invisible grid in the camera, which is ignored in the evaluation.
 
 
 ## Metrics
@@ -57,14 +57,10 @@ where $TP_c$ , $FP_c$ , and $FN_c$ correspond to the number of true positive, fa
 ### F1 Score
 We also measure the F-score as the harmonic mean of the completeness $P_c$ and the accuracy $P_a$.
 
-Accuracy: Percentage of predicted voxels that are within a distance threshold to the ground truth voxels.
-
-Completeness: Percentage of ground truth voxels that are within a distance threshold to the predicted voxels.
-
 $$
-    F-score=\left( \frac{P_a^{-1}+P_c^{-1}}{2} \right) ^{-1} 
+    F-score=\left( \frac{P_a^{-1}+P_c^{-1}}{2} \right) ^{-1} ,
 $$
-
+where $P_a$ is the percentage of predicted voxels that are within a distance threshold to the ground truth voxels, and $P_c$ is the percentage of ground truth voxels that are within a distance threshold to the predicted voxels.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
