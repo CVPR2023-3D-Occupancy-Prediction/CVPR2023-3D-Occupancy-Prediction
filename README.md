@@ -60,6 +60,7 @@ We also measure the F-score as the harmonic mean of the completeness $P_c$ and t
 $$
     F-score=\left( \frac{P_a^{-1}+P_c^{-1}}{2} \right) ^{-1} ,
 $$
+
 where $P_a$ is the percentage of predicted voxels that are within a distance threshold to the ground truth voxels, and $P_c$ is the percentage of ground truth voxels that are within a distance threshold to the predicted voxels.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
