@@ -64,13 +64,16 @@ where $P_a$ is the percentage of predicted voxels that are within a distance thr
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Timeline
-- Feb 15, 2023 - Dataset and Devkit Release.
-- Mar 16, 2023 - Challenge Period Open.
-- May 27, 2023 - Challenge Period End.
-- May 29, 2023 - Finalist Notification.
+- Feb 20, 2023 - Dataset and Devkit Release.
+- Mar 21, 2023 - Challenge Period Open.
+- Jun 01, 2023 - Challenge Period End.
+- Jun 03, 2023 - Finalist Notification.
 - Jun 10, 2023 - Technical Report Deadline.
 - Jun 12, 2023 - Winner Announcement.
+
+<small> * All due at 23:59 UTC+8. </small>
 <p align="right">(<a href="#top">back to top</a>)</p>
+
 
 ## Data
 
