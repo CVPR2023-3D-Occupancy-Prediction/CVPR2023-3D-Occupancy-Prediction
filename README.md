@@ -76,6 +76,8 @@ where $P_a$ is the percentage of predicted voxels that are within a distance thr
 ## Data
 
 ### Format
+<center>
+
 | Type |  Info |
 | :----: | :----: |
 | mini            | 404 |
@@ -88,6 +90,9 @@ where $P_a$ is the percentage of predicted voxels that are within a distance thr
 | volume size     | [200, 200, 16]|
 | voxel semantic  | 0 - 17 |
 | voxel state     | 0 / 1 |
+
+</center>
+
 
 - The Occpancy3D dataset contains 18 classes. The definition of classes from 0 to 16 is the same as the [nuScenes-lidarseg](https://github.com/nutonomy/nuscenes-devkit/blob/fcc41628d41060b3c1a86928751e5a571d2fc2fa/python-sdk/nuscenes/eval/lidarseg/README.md) dataset. The label 17 category represents voxels that are not occupied by any object, which is named as `free`. 
 
