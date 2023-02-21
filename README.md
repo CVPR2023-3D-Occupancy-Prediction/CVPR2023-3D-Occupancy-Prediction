@@ -61,7 +61,7 @@ $$
 
 where $TP_c$ , $FP_c$ , and $FN_c$ correspond to the number of true positive, false positive, and false negative predictions for class $c_i$.
 
-### F1 Score
+### F Score
 We also measure the F-score as the harmonic mean of the completeness $P_c$ and the accuracy $P_a$.
 
 $$
@@ -72,34 +72,57 @@ where $P_a$ is the percentage of predicted voxels that are within a distance thr
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Timeline
-- Feb 15, 2023 - Dataset and Devkit Release.
-- Mar 16, 2023 - Challenge Period Open.
-- May 27, 2023 - Challenge Period End.
-- May 29, 2023 - Finalist Notification.
-- Jun 10, 2023 - Technical Report Deadline.
-- Jun 12, 2023 - Winner Announcement.
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Data
+
+### Format
+| Type |  Info |
+| :----: | :----: |
+| mini            | 404 |
+| train           | 28,130 |
+| val             | 6,019 |
+| test            | 6,006 |
+| cameras         | 6 |
+| voxel size      | 0.4m |
+| range           | [-40m, -40m, -1m, 40m, 40m, 5.4m]|
+| volume size     | [200, 200, 16]|
+| voxel semantic  | 0 - 17 |
+| voxel state     | 0 / 1 |
+
+- The Occpancy3D dataset contains 18 classes. The definition of classes from 0 to 16 is the same as the [nuScenes-lidarseg](https://github.com/nutonomy/nuscenes-devkit/blob/fcc41628d41060b3c1a86928751e5a571d2fc2fa/python-sdk/nuscenes/eval/lidarseg/README.md) dataset. The label 17 category represents voxels that are not occupied by any object, which is named as `free`. 
+
+<div id="top"  align="center">
+<img src="./figs/state_lidar.jpg" width="320px">
+<img src="./figs/state_camera.jpg" width="320px">
+</div>
+<div id="top" align="center">
+Fig1. Voxel state in LiDAR and Camera view.
+</div>
+
+- The ground truth of occupancy derives from accumulative LiDAR scans. For those not detected by LiDAR, their states could be free or unobserved. The unobserved state stands for the voxels that are unknown. For instance, if a voxel is occluded by a wall, we don't know whether the corresponding position has something or not. So we set these voxel states to be unobserved. `[mask_lidar]` is a 0-1 binary mask, and 0 representing a voxel is unobserved. As shown in Fig.1(a), grey voxels indicate their state is unobserved. Due to the limitation of visualization effects, we only show unobserved voxels that are the same height as the ground. 
+- It has to be mentioned that the installation positions of LiDAR and cameras are different, therefore, part of the observed voxels in the accumulative LiDAR view may not be seen in the current frame of cameras. Since we put more emphasis on a vision-centric challenge, we additionally provide binary voxel state mask `[mask_camera]`, referring to whether voxels are observed or not in the current camera view. As shown in Fig.1(b), white voxels indicate the voxels are observed in the accumulative LiDAR view but unobserved in the current camera view.
+- Both `[mask_lidar]` and `[mask_camera]` masks are optional for training. Participants do not need to predict the state mask. `[mask_camera]` is used for evaluation; the unobserved voxels are not involved during calculating the F-score and mIoU.
+
+
+
 
 ### Download
 | Subset | Google Drive <img src="https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png" alt="Google Drive" width="18"/> | Baidu Yun <img src="https://nd-static.bdstatic.com/m-static/v20-main/favicon-main.ico" alt="Baidu Yun" width="18"/> | Size |
 | :---: | :---: | :---: | :---: |
-| mini | [data](https://drive.google.com/file/d/1YQy76A7-bA5CxTZb31lQSPNmz5RsgwJN/view?usp=share_link) | [data](https://drive.google.com/file/d/1YQy76A7-bA5CxTZb31lQSPNmz5RsgwJN/view?usp=share_link)  | ~29G |
-| trainval  | coming soon | coming soon | ~2.5G |
-| test | coming soon | coming soon | ~130M |
+| mini | [data](https://drive.google.com/file/d/1YQy76A7-bA5CxTZb31lQSPNmz5RsgwJN/view?usp=share_link) | [data](https://drive.google.com/file/d/1YQy76A7-bA5CxTZb31lQSPNmz5RsgwJN/view?usp=share_link)  | ~ |
+| trainval  | coming soon | coming soon | ~32 G |
+| test | coming soon | coming soon | ~ |
 
-* The `imgs` datas have the same hierarchy with the image samples in the original nuScenes dataset. 
+* Mini and trainval data contain three parts -- `imgs`, `gts` and `annotations`. The `imgs` datas have the same hierarchy with the image samples in the original nuScenes dataset.
 
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Hierarchy
 The hierarchy of folder `Occpancy3D-nuScenes-V1.0/` is described below:
 ```
 └── Occpancy3D-nuScenes-V1.0
+    |
+    ├── mini
+    |
     ├── trainval
     |   ├── imgs
     |   |   ├── CAM_BACK
@@ -127,11 +150,8 @@ The hierarchy of folder `Occpancy3D-nuScenes-V1.0/` is described below:
 
 ```
 - `imgs/` contains images captured by various cameras.
-- `gts/` contains ground-truth of each sample. `[scene_name]` specifies a sequence of frames, and `[frame_id]` specifies a single frame in a sequence.
-- `annotations.json` contains meta infos of the  dataset.
-
-
-
+- `gts/` contains the ground truth of each sample. `[scene_name]` specifies a sequence of frames, and `[frame_id]` specifies a single frame in a sequence.
+- `annotations.json` contains meta infos of the dataset.
 
 ```
 annotations {
@@ -161,7 +181,7 @@ annotations {
                         "translation":                          <float> [3] -- coordinate system origin in meters
                         "rotation":                             <float> [4] -- coordinate system orientation as quaternion
                     },
-                    "gt_root_path":                                  <str> -- corresponding 3D voxel gt path
+                    "gt_root_path":                             <str> -- corresponding 3D voxel gt root path
                     "next":                                     <str> -- frame_id of the previous keyframe in the scene 
                     "prev":                                     <str> -- frame_id of the next keyframe in the scene
                 }
@@ -171,45 +191,24 @@ annotations {
 }
 ```
 
-
-### Format
-
-
-| Type |  Info |
-| :----: | :----: |
-| train           | 27,430 |
-| val             | 5,869 |
-| test            | 6,006 |
-| cameras         | 6 |
-| voxel size      | 0.4m |
-| range           | [-40m, -40m, -1m, 40m, 40m, 5.4m]|
-| volume size     | [200, 200, 16]|
-| voxel semantic  | 0-17 |
-| voxel state     | 0/1 |
-|                 |     |
-
-- The Occpancy3D dataset contains 18 classes. The definition of classes from 0 to 16 is the same as the [nuScenes-lidarseg](https://github.com/nutonomy/nuscenes-devkit/blob/fcc41628d41060b3c1a86928751e5a571d2fc2fa/python-sdk/nuscenes/eval/lidarseg/README.md) dataset. The label 17 category represents voxels that are not occupied by any object, which named as `free`. 
-- The ground truth of occupancy derives from accumulative LiDAR scans. For those are not detected by LiDAR, their states could be free or unobserved. Unobserved state stands for the voxels are unknown. For instance, if a voxel is occluded by a wall, we don't know whether the corresponding position have something or not. So we set these voxel states to be unobserved. `[state_lidar]` is a 0-1 binary mask, and 0 representing a voxel is unobserved. As shown in Fig.1(a), grey voxel indicates its state is unobserved. Due to limitation of visualization effects, we only show unobserved voxels that are the same height as the ground. 
-- It has to be mentioned that the installation positions of LiDAR and cameras are different, therefore, part of observed voxels in the accumulative LiDAR view may not be seen in the current frame of cameras. Since we put more emphasis on a vision-centric challenge, we additionally provide binary voxel state mask `[state_camera]` , referring to voxels are observed or not in the current camera view. As shown in Fig.1(b), white voxels indicate the voxels is observed in the accumulative LiDAR view but unobserved in the current camera view.
-- Both `[state_lidar]` and `[state_camera]` masks are optional for training. Participants do not need to predict the state mask. `[state_camera]` is used for evaluation, the unobeserved voxels are not involved during calculating the F-score and mIoU.
-  
-<div id="top"  align="center">
-<img src="./figs/state_lidar.jpg" width="320px">
-<img src="./figs/state_camera.jpg" width="320px">
-</div>
-<div id="top" align="center">
-Fig1. Voxel state in LiDAR and Camera view.
-</div>
-
 ### Known Issues
-- Nuscene ([issues-721](https://github.com/nutonomy/nuscenes-devkit/issues/721)) lacks of translation in z-axis, it is hard to recovery accurate 6d localization and would lead to misalignment of point clouds while accumulating them over whole scenes. We did some specific . However, ground stratification still occurs on several data.
+- Nuscene ([issues-721](https://github.com/nutonomy/nuscenes-devkit/issues/721)) lacks translation in the z-axis, which makes it hard to recover accurate 6d localization and would lead to the misalignment of point clouds while accumulating them over whole scenes. We did some specific . However, ground stratification still occurs in several data.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Development Kit
+## Getting Started
 
 To be released.
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+## Challenge Timeline
+- Mar 16, 2023 - Challenge Period Open.
+- May 27, 2023 - Challenge Period End.
+- May 29, 2023 - Finalist Notification.
+- Jun 10, 2023 - Technical Report Deadline.
+- Jun 12, 2023 - Winner Announcement.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -223,4 +222,3 @@ Before using the dataset, you should register on the website and agree to the te
 All code within this repository is under [Apache License 2.0](./LICENSE).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-#
