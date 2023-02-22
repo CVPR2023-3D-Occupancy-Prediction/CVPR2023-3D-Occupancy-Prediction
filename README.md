@@ -96,7 +96,7 @@ Figure 1. Mask in LiDAR and camera view.
   
 </div>
 
-- The dataset contains 18 classes. The definition of classes from 0 to 16 is the same as the [nuScenes-lidarseg](https://github.com/nutonomy/nuscenes-devkit/blob/fcc41628d41060b3c1a86928751e5a571d2fc2fa/python-sdk/nuscenes/eval/lidarseg/README.md) dataset. The label 17 category represents voxels that are not occupied by anything, which is named as `free`. Voxel semantics for each sample frame is given as `semantics` in the labels.npz. 
+- The dataset contains 18 classes. The definition of classes from 0 to 16 is the same as the [nuScenes-lidarseg](https://github.com/nutonomy/nuscenes-devkit/blob/fcc41628d41060b3c1a86928751e5a571d2fc2fa/python-sdk/nuscenes/eval/lidarseg/README.md) dataset. The label 17 category represents voxels that are not occupied by anything, which is named as `free`. Voxel semantics for each sample frame is given as `[semantics]` in the labels.npz. 
 
 - <strong>How are the labels annotated?</strong> The ground truth labels of occupancy derive from accumulative LiDAR scans with human annotations. 
   - If a voxel reflects a LiDAR point, then it is assigned as the same semantic label as the LiDAR point;
@@ -152,13 +152,13 @@ The hierarchy of folder `Occpancy3D-nuScenes-V1.0/` is described below:
 - `imgs/` contains images captured by various cameras.
 - `gts/` contains the ground truth of each sample. `[scene_name]` specifies a sequence of frames, and `[frame_token]` specifies a single frame in a sequence.
 - `annotations.json` contains meta infos of the dataset.
-- `labels.npz' contains `semantics`, `mask_lidar`, and `mask_camera` for each frame. 
+- `labels.npz` contains `[semantics]`, `[mask_lidar]`, and `[mask_camera]` for each frame. 
 
 ```
 annotations {
     "train_split": ["scene-0001", ...],                         <list> -- training dataset split by scene_name
     "val_split": list ["scene-0003", ...],                      <list> -- validation dataset split by scene_name
-    "scene_infos" {                                             <dcit> -- meta infos of the scenes    
+    "scene_infos" {                                             <dict> -- meta infos of the scenes    
         [scene_name]: {                                         <str> -- name of the scene.  
             [frame_token]: {                                    <str> -- samples in a scene, ordered by time
                     "timestamp":                                <str> -- timestamp (or token), unique by sample
