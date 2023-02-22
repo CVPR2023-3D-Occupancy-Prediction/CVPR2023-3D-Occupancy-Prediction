@@ -1,6 +1,6 @@
 <div id="top" align="center">
 
-# CVPR 2023 Occupancy Prediction Challenge
+# CVPR 2023 3D Occupancy Prediction Challenge
 **The world's First 3D Occupancy Benchmark for Scene Perception in Autonomous Driving.**
 
 
