@@ -96,7 +96,7 @@ Figure 1. Mask in LiDAR and camera view.
   
 </div>
 
-- The dataset contains 18 classes. The definition of classes from 0 to 16 is the same as the [nuScenes-lidarseg](https://github.com/nutonomy/nuscenes-devkit/blob/fcc41628d41060b3c1a86928751e5a571d2fc2fa/python-sdk/nuscenes/eval/lidarseg/README.md) dataset. The label 17 category represents voxels that are not occupied by anything, which is named as `free`. 
+- The dataset contains 18 classes. The definition of classes from 0 to 16 is the same as the [nuScenes-lidarseg](https://github.com/nutonomy/nuscenes-devkit/blob/fcc41628d41060b3c1a86928751e5a571d2fc2fa/python-sdk/nuscenes/eval/lidarseg/README.md) dataset. The label 17 category represents voxels that are not occupied by anything, which is named as `free`. Voxel semantics for each sample frame is given as `semantics` in the labels.npz. 
 
 - <strong>How are the labels annotated?</strong> The ground truth labels of occupancy derive from accumulative LiDAR scans with human annotations. 
   - If a voxel reflects a LiDAR point, then it is assigned as the same semantic label as the LiDAR point;
@@ -138,9 +138,7 @@ The hierarchy of folder `Occpancy3D-nuScenes-V1.0/` is described below:
     |   ├── gts  
     |   |   ├── [scene_name]
     |   |   |   ├── [frame_token]
-    |   |   |   |   ├── semantics.npz
-    |   |   |   |   ├── mask_lidar.npz
-    |   |   |   |   └── mask_camera.npz
+    |   |   |   |   └── labels.npz
     |   |   |   └── ...
     |   |   └── ...
     |   |
@@ -154,6 +152,7 @@ The hierarchy of folder `Occpancy3D-nuScenes-V1.0/` is described below:
 - `imgs/` contains images captured by various cameras.
 - `gts/` contains the ground truth of each sample. `[scene_name]` specifies a sequence of frames, and `[frame_token]` specifies a single frame in a sequence.
 - `annotations.json` contains meta infos of the dataset.
+- `labels.npz' contains `semantics`, `mask_lidar`, and `mask_camera` for each frame. 
 
 ```
 annotations {
@@ -182,7 +181,7 @@ annotations {
                         "translation":                          <float> [3] -- coordinate system origin in meters
                         "rotation":                             <float> [4] -- coordinate system orientation as quaternion
                     },
-                    "gt_root_path":                             <str> -- corresponding 3D voxel gt root path
+                    "gt_path":                                  <str> -- corresponding 3D voxel gt path, *.npz
                     "next":                                     <str> -- frame_token of the previous keyframe in the scene 
                     "prev":                                     <str> -- frame_token of the next keyframe in the scene
                 }
