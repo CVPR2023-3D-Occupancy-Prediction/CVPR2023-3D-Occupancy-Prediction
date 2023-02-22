@@ -71,11 +71,12 @@ where $P_a$ is the percentage of predicted voxels that are within a distance thr
 
 ## Data
 <div id="top"  align="center">
-<img src="./figs/mask_lidar.jpg" width="320px">
-<img src="./figs/mask_camera.jpg" width="320px">
+<img src="./figs/mask_none.jpg" width="256px">
+<img src="./figs/mask_lidar.jpg" width="256px">
+<img src="./figs/mask_camera.jpg" width="256px">
 </div>
 <div id="top" align="center">
-Figure 1. Voxel labels in LiDAR and Camera view.
+Figure 1. Mask in LiDAR and camera view.
 </div>
 
 ### Basic Information
@@ -100,9 +101,9 @@ Figure 1. Voxel labels in LiDAR and Camera view.
 - <strong>How are the labels annotated?</strong> The ground truth labels of occupancy derive from accumulative LiDAR scans with human annotations. 
   - If a voxel reflects a LiDAR point, then it is assigned as the same semantic label as the LiDAR point;
   - If a LiDAR beam passes through a voxel in the air, the voxel is set to be `free`;
-  - Otherwise, we set the voxel to be unknown, or unobserved. This happens due to the sparsity of the LiDAR or the voxel is occluded, e.g. by a wall. In the dataset, `[mask_lidar]` is a 0-1 binary mask, where 0's represent unobserved voxels. As shown in Fig.1(a), grey voxels are unobserved. Due to the limitation of the visualization tool, we only show unobserved voxels at the same height as the ground. 
+  - Otherwise, we set the voxel to be unknown, or unobserved. This happens due to the sparsity of the LiDAR or the voxel is occluded, e.g. by a wall. In the dataset, `[mask_lidar]` is a 0-1 binary mask, where 0's represent unobserved voxels. As shown in Fig.1(b), grey voxels are unobserved. Due to the limitation of the visualization tool, we only show unobserved voxels at the same height as the ground. 
 
-- <strong>Camera visibility.</strong> Note that the installation positions of LiDAR and cameras are different, therefore, some observed voxels in the  LiDAR view are not seen by the cameras. Since we focus on a vision-centric task, we provide a binary voxel mask `[mask_camera]`, indicating whether the voxels are observed or not in the current camera view. As shown in Fig.1(b), white voxels are observed in the accumulative LiDAR view but unobserved in the current camera view.
+- <strong>Camera visibility.</strong> Note that the installation positions of LiDAR and cameras are different, therefore, some observed voxels in the  LiDAR view are not seen by the cameras. Since we focus on a vision-centric task, we provide a binary voxel mask `[mask_camera]`, indicating whether the voxels are observed or not in the current camera view. As shown in Fig.1(c), white voxels are observed in the accumulative LiDAR view but unobserved in the current camera view.
 
 - Both `[mask_lidar]` and `[mask_camera]` masks are optional for training. Participants do not need to predict the masks. Only `[mask_camera]` is used for evaluation; the unobserved voxels are not involved during calculating the F-score and mIoU.
 
