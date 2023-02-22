@@ -18,26 +18,22 @@
 ## Table of Contents
 - [CVPR 2023 Occupancy Prediction Challenge](#cvpr-2023-occupancy-prediction-challenge)
   - [Table of Contents](#table-of-contents)
-  - [News](#news)
   - [Introduction](#introduction)
   - [Task Definition](#task-definition)
   - [Evaluation Metrics](#evaluation-metrics)
     - [mIoU](#miou)
-    - [F1 Score](#f1-score)
+    - [F Score](#f-score)
   - [Timeline](#timeline)
   - [Data](#data)
     - [Download](#download)
     - [Hierarchy](#hierarchy)
     - [Format](#format)
     - [Known Issues](#known-issues)
-  - [Development Kit](#development-kit)
+  - [Getting Started](#getting-started)
   - [Leaderboard](#leaderboard)
   - [License](#license)
 
-## News
-- [2023/01]
-  * Dataset `v0.1`: Initial Occupancy dataset sample released.
-  * Devkit `v0.11`: Initial Occupancy devkit released.
+
   
 ## Introduction
 Understanding the 3D surroundings including the background stuffs and foreground objects is important for autonomous driving. In the traditional 3D object detection task, a foreground object is represented by the 3D bounding box. However, the geometrical shape of the object is complex, which can not be represented by a simple 3D box, and the perception of the background is absent. The goal of this task is to predict the 3D occupancy of the scene. In this task, we provide a large-scale occupancy benchmark based on the nuScenes dataset. The benchmark is a voxelized representation of the 3D space, and the occupancy state and semantics of the voxel in 3D space are jointly estimated in this task. The complexity of this task lies in the dense prediction of 3D space given the surround-view image.
@@ -92,8 +88,8 @@ where $P_a$ is the percentage of predicted voxels that are within a distance thr
 - The Occpancy3D dataset contains 18 classes. The definition of classes from 0 to 16 is the same as the [nuScenes-lidarseg](https://github.com/nutonomy/nuscenes-devkit/blob/fcc41628d41060b3c1a86928751e5a571d2fc2fa/python-sdk/nuscenes/eval/lidarseg/README.md) dataset. The label 17 category represents voxels that are not occupied by any object, which is named as `free`. 
 
 <div id="top"  align="center">
-<img src="./figs/state_lidar.jpg" width="320px">
-<img src="./figs/state_camera.jpg" width="320px">
+<img src="./figs/mask_lidar.jpg" width="320px">
+<img src="./figs/mask_camera.jpg" width="320px">
 </div>
 <div id="top" align="center">
 Fig1. Voxel state in LiDAR and Camera view.
@@ -109,7 +105,7 @@ Fig1. Voxel state in LiDAR and Camera view.
 ### Download
 | Subset | Google Drive <img src="https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png" alt="Google Drive" width="18"/> | Baidu Yun <img src="https://nd-static.bdstatic.com/m-static/v20-main/favicon-main.ico" alt="Baidu Yun" width="18"/> | Size |
 | :---: | :---: | :---: | :---: |
-| mini | [data](https://drive.google.com/file/d/1YQy76A7-bA5CxTZb31lQSPNmz5RsgwJN/view?usp=share_link) | [data](https://drive.google.com/file/d/1YQy76A7-bA5CxTZb31lQSPNmz5RsgwJN/view?usp=share_link)  | ~ |
+| mini | [data](https://drive.google.com/drive/folders/1ksWt4WLEqOxptpWH2ZN-t1pjugBhg3ME?usp=share_link) | [data](https://pan.baidu.com/s/1IvOoJONwzKBi32Ikjf8bSA?pwd=5uv6)  | ~ 440M |
 | trainval  | coming soon | coming soon | ~32 G |
 | test | coming soon | coming soon | ~ |
 
@@ -135,10 +131,10 @@ The hierarchy of folder `Occpancy3D-nuScenes-V1.0/` is described below:
     |   |     
     |   ├── gts  
     |   |   ├── [scene_name]
-    |   |   |   ├── [frmae_id]
+    |   |   |   ├── [frame_token]
     |   |   |   |   ├── semantics.npz
-    |   |   |   |   ├── state_lidar.npz
-    |   |   |   |   └── state_camera.npz
+    |   |   |   |   ├── mask_lidar.npz
+    |   |   |   |   └── mask_camera.npz
     |   |   |   └── ...
     |   |   └── ...
     |   |
@@ -150,7 +146,7 @@ The hierarchy of folder `Occpancy3D-nuScenes-V1.0/` is described below:
 
 ```
 - `imgs/` contains images captured by various cameras.
-- `gts/` contains the ground truth of each sample. `[scene_name]` specifies a sequence of frames, and `[frame_id]` specifies a single frame in a sequence.
+- `gts/` contains the ground truth of each sample. `[scene_name]` specifies a sequence of frames, and `[frame_token]` specifies a single frame in a sequence.
 - `annotations.json` contains meta infos of the dataset.
 
 ```
@@ -159,8 +155,7 @@ annotations {
     "val_split": list ['scene-0003', ...],                      <list> -- validation dataset split by scene_name
     "scene_infos" {                                             <dcit> -- meta infos of the scenes    
         [scene_name]: {                                         <str> -- name of the scene.  
-            [frame_id]: {                                       <str> -- samples in a scene, ordered by time
-                    "frame_token":                              <str> -- frame_token, unique by frame
+            [frame_token]: {                                    <str> -- samples in a scene, ordered by time
                     "timestamp":                                <str> -- timestamp (or token), unique by sample
                     "camera_sensor": {                          <dict> -- meta infos of the camera sensor
                         [cam_token]: {                          <str> -- token of the camera
@@ -182,8 +177,8 @@ annotations {
                         "rotation":                             <float> [4] -- coordinate system orientation as quaternion
                     },
                     "gt_root_path":                             <str> -- corresponding 3D voxel gt root path
-                    "next":                                     <str> -- frame_id of the previous keyframe in the scene 
-                    "prev":                                     <str> -- frame_id of the next keyframe in the scene
+                    "next":                                     <str> -- frame_token of the previous keyframe in the scene 
+                    "prev":                                     <str> -- frame_token of the next keyframe in the scene
                 }
             ]             
         }
