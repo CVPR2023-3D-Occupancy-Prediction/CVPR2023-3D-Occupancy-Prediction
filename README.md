@@ -69,11 +69,22 @@ where $P_a$ is the percentage of predicted voxels that are within a distance thr
 
 
 ## Data
-<div id="top"  align="center">
-<img src="./figs/mask.jpg">
+<div style="display: flex; flex-direction: row; ">
+  <div style="display: flex; flex-direction: column; align-items: center; align-content: center; margin:10px 10px">
+    <img src="./figs/mask_none.jpg">
+    (a)
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center; align-content: center; margin:10px 10px">
+    <img src="./figs/mask_lidar.jpg">
+    (b)
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center; align-content: center; margin:10px 10px">
+    <img src="./figs/mask_camera.jpg">
+    (c)
+  </div>
 </div>
 <div id="top" align="center">
-Figure 1. Mask in LiDAR and camera view.
+Figure 1. Mask in LiDAR and camera view. Grey voxels are unobserved in LiDAR view, and white voxels are observed in the accumulative LiDAR view but unobserved in the current camera view.
 </div>
 
 ### Basic Information
