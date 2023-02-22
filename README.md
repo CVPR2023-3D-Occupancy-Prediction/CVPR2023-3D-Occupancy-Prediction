@@ -69,7 +69,7 @@ where $P_a$ is the percentage of predicted voxels that are within a distance thr
 
 
 ## Data
-<div style="display: flex; flex-direction: row; ">
+<div style="display: flex; flex-direction: row; width: 800px">
   <div style="display: flex; flex-direction: column; align-items: center; align-content: center; margin:10px 10px">
     <img src="./figs/mask_none.jpg">
     (a)
