@@ -17,33 +17,32 @@
 
 ## Table of Contents
 - [CVPR 2023 Occupancy Prediction Challenge](#cvpr-2023-occupancy-prediction-challenge)
-  - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Task Definition](#task-definition)
   - [Evaluation Metrics](#evaluation-metrics)
     - [mIoU](#miou)
     - [F Score](#f-score)
-  - [Timeline](#timeline)
   - [Data](#data)
+    - [Basic Information](#Basic-Information)
     - [Download](#download)
     - [Hierarchy](#hierarchy)
     - [Format](#format)
     - [Known Issues](#known-issues)
   - [Getting Started](#getting-started)
+  - [Timeline](#timeline)
   - [Leaderboard](#leaderboard)
   - [License](#license)
 
 
-  
 ## Introduction
 Understanding the 3D surroundings including the background stuffs and foreground objects is important for autonomous driving. In the traditional 3D object detection task, a foreground object is represented by the 3D bounding box. However, the geometrical shape of the object is complex, which can not be represented by a simple 3D box, and the perception of the background is absent. The goal of this task is to predict the 3D occupancy of the scene. In this task, we provide a large-scale occupancy benchmark based on the nuScenes dataset. The benchmark is a voxelized representation of the 3D space, and the occupancy state and semantics of the voxel in 3D space are jointly estimated in this task. The complexity of this task lies in the dense prediction of 3D space given the surround-view image.
-
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Task Definition
 Given images from multiple cameras, the goal is to predict the current occupancy state and semantics of each voxel grid in the scene. The voxel state is predicted to be either free or occupied. If a voxel is occupied, its semantic class needs to be predicted, as well. Besides, we also provide a binary observed/unobserved mask for each frame. An observed voxel is defined as an invisible grid in the current camera observation, which is ignored in the evaluation stage.
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Evaluation Metrics
 Leaderboard ranking for this challenge is by the intersection-over-union (mIoU) over all classes. 
@@ -71,9 +70,7 @@ where $P_a$ is the percentage of predicted voxels that are within a distance thr
 
 ## Data
 <div id="top"  align="center">
-<img src="./figs/mask_none.jpg" width="256px">
-<img src="./figs/mask_lidar.jpg" width="256px">
-<img src="./figs/mask_camera.jpg" width="256px">
+<img src="./figs/mask.jpg">
 </div>
 <div id="top" align="center">
 Figure 1. Mask in LiDAR and camera view.
