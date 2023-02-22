@@ -189,7 +189,7 @@ annotations {
 ```
 
 ### Known Issues
-- Nuscene ([issues-721](https://github.com/nutonomy/nuscenes-devkit/issues/721)) lacks translation in the z-axis, which makes it hard to recover accurate 6d localization and would lead to the misalignment of point clouds while accumulating them over whole scenes. We did some specific . However, ground stratification still occurs in several data.
+- Nuscene ([issues-721](https://github.com/nutonomy/nuscenes-devkit/issues/721)) lacks translation in the z-axis, which makes it hard to recover accurate 6d localization and would lead to the misalignment of point clouds while accumulating them over whole scenes. Ground stratification occurs in several data.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
