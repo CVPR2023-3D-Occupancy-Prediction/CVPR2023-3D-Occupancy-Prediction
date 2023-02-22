@@ -75,10 +75,10 @@ where $P_a$ is the percentage of predicted voxels that are within a distance thr
 <img src="./figs/mask_camera.jpg" width="320px">
 </div>
 <div id="top" align="center">
-Fig1. Voxel state in LiDAR and Camera view.
+Figure 1. Voxel labels in LiDAR and Camera view.
 </div>
 
-### Format
+### Basic Information
 <div align="center">
   
 | Type |  Info |
@@ -104,7 +104,7 @@ Fig1. Voxel state in LiDAR and Camera view.
 
 - <strong>Camera visibility.</strong> Note that the installation positions of LiDAR and cameras are different, therefore, some observed voxels in the  LiDAR view are not seen by the cameras. Since we focus on a vision-centric task, we provide a binary voxel mask `[mask_camera]`, indicating whether the voxels are observed or not in the current camera view. As shown in Fig.1(b), white voxels are observed in the accumulative LiDAR view but unobserved in the current camera view.
 
-- Both `[mask_lidar]` and `[mask_camera]` masks are optional for training. Participants do not need to predict the state masks. Only `[mask_camera]` is used for evaluation; the unobserved voxels are not involved during calculating the F-score and mIoU.
+- Both `[mask_lidar]` and `[mask_camera]` masks are optional for training. Participants do not need to predict the masks. Only `[mask_camera]` is used for evaluation; the unobserved voxels are not involved during calculating the F-score and mIoU.
 
 
 ### Download
