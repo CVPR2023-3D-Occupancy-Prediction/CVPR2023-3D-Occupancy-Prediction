@@ -23,13 +23,12 @@
     - [mIoU](#miou)
     - [F Score](#f-score)
   - [Data](#data)
-    - [Basic Information](#Basic-Information)
+    - [Basic Information](#basic-information)
     - [Download](#download)
     - [Hierarchy](#hierarchy)
-    - [Format](#format)
     - [Known Issues](#known-issues)
   - [Getting Started](#getting-started)
-  - [Timeline](#timeline)
+  - [Timeline](#challenge-timeline)
   - [Leaderboard](#leaderboard)
   - [License](#license)
 
@@ -73,7 +72,7 @@ where $P_a$ is the percentage of predicted voxels that are within a distance thr
 <img src="./figs/mask.jpg">
 </div>
 <div id="top" align="center">
-Figure 1. Mask in LiDAR and camera view. Grey voxels are unobserved in LiDAR view and white voxels are observed in the accumulative LiDAR view but unobserved in the current camera view.
+Figure 1. Semantic labels (left), visibility masks in the LiDAR (middle) and the camera (right) view. Grey voxels are unobserved in LiDAR view and white voxels are observed in the accumulative LiDAR view but unobserved in the current camera view.
 </div>
 
 ### Basic Information
@@ -106,7 +105,7 @@ Figure 1. Mask in LiDAR and camera view. Grey voxels are unobserved in LiDAR vie
 
 
 ### Download
-| Subset | Google Drive <img src="https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png" alt="Google Drive" width="18"/> | Baidu Yun <img src="https://nd-static.bdstatic.com/m-static/v20-main/favicon-main.ico" alt="Baidu Yun" width="18"/> | Size |
+| Subset | Google Drive <img src="https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png" alt="Google Drive" width="18"/> | Baidu Cloud <img src="https://nd-static.bdstatic.com/m-static/v20-main/favicon-main.ico" alt="Baidu Yun" width="18"/> | Size |
 | :---: | :---: | :---: | :---: |
 | mini | [data](https://drive.google.com/drive/folders/1ksWt4WLEqOxptpWH2ZN-t1pjugBhg3ME?usp=share_link) | [data](https://pan.baidu.com/s/1IvOoJONwzKBi32Ikjf8bSA?pwd=5uv6)  | ~ 440M |
 | trainval  | [data](https://drive.google.com/drive/folders/1JObO75iTA2Ge5fa8D3BWC8R7yIG8VhrP?usp=share_link) | coming soon | ~32 G |
