@@ -142,18 +142,10 @@ model = dict(
             iou_cost=dict(type='IoUCost', weight=0.0), # Fake cost. This is just to make it compatible with DETR head.
             pc_range=point_cloud_range)))))
 
-# dataset_type = 'NuSceneOcc'
-# data_root = 'data/occ3d-nus/'
-# file_client_args = dict(backend='disk')
-# occ_gt_data_root='data/occ3d-nus'
-
-
 dataset_type = 'NuSceneOcc'
-data_root = 'data/occ-mini/'
+data_root = 'data/occ3d-nus/'
 file_client_args = dict(backend='disk')
-occ_gt_data_root='data/occ-mini'
-
-
+occ_gt_data_root='data/occ3d-nus'
 
 train_pipeline = [
     dict(type='LoadMultiViewImageFromFiles', to_float32=True),
