@@ -194,7 +194,9 @@ annotations {
 
 ## Getting Started
 
-To be released.
+We provide a baseline model based on [BEVFormer](https://github.com/fundamentalvision/BEVFormer).
+
+Please refer to [getting_started](docs/getting_started.md) for details.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
