@@ -6,7 +6,7 @@ Follow https://github.com/fundamentalvision/BEVFormer/blob/master/docs/install.m
 
 2. Download the CAN bus expansion data and maps [HERE](https://www.nuscenes.org/download).
 
-3. Organize your floder structure as below：
+3. Organize your folder structure as below：
 ```
 Occupancy3D
 ├── projects/
