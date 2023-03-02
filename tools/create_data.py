@@ -5,7 +5,7 @@
 # ---------------------------------------------
 from data_converter.create_gt_database import create_groundtruth_database
 from data_converter import nuscenes_converter as nuscenes_converter
-from data_converter import nuscenes_occ_converter_own as occ_converter
+from data_converter import nuscenes_occ_converter as occ_converter
 
 import argparse
 from os import path as osp
