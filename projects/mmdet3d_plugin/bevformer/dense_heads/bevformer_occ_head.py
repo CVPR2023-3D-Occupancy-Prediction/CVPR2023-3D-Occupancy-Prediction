@@ -174,6 +174,7 @@ class BEVFormerOccHead(BaseModule):
         return loss_dict
 
     def loss_single(self,voxel_semantics,mask_camera,preds):
+        voxel_semantics=voxel_semantics.long()
         if self.use_mask:
             voxel_semantics=voxel_semantics.reshape(-1)
             preds=preds.reshape(-1,self.num_classes)
