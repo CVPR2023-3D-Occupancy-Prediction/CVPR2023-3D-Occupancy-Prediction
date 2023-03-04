@@ -235,7 +235,7 @@ def _fill_occ_trainval_infos(nusc,
         pose_record = nusc.get('ego_pose', sd_rec['ego_pose_token'])
         lidar_path, boxes, _ = nusc.get_sample_data(lidar_token)
 
-        mmcv.check_file_exist(lidar_path)
+        # mmcv.check_file_exist(lidar_path)
         can_bus = _get_can_bus_info(nusc, nusc_can_bus, sample)
         ##
         info = {
