@@ -6,6 +6,7 @@
 import argparse
 import mmcv
 import os
+import sys
 import torch
 import warnings
 from mmcv import Config, DictAction
@@ -13,8 +14,6 @@ from mmcv.cnn import fuse_conv_bn
 from mmcv.parallel import MMDataParallel, MMDistributedDataParallel
 from mmcv.runner import (get_dist_info, init_dist, load_checkpoint,
                          wrap_fp16_model)
-
-from mmdet3d.apis import single_gpu_test
 from mmdet3d.datasets import build_dataset
 from projects.mmdet3d_plugin.datasets.builder import build_dataloader
 from mmdet3d.models import build_model
@@ -113,12 +112,11 @@ def parse_args():
 
 def main():
     args = parse_args()
-
-    assert args.out or args.eval or args.format_only or args.show \
-        or args.show_dir, \
-        ('Please specify at least one operation (save/eval/format/show the '
-         'results / save the results) with the argument "--out", "--eval"'
-         ', "--format-only", "--show" or "--show-dir"')
+    # assert args.out or args.eval or args.format_only or args.show \
+    #     or args.show_dir, \
+    #     ('Please specify at least one operation (save/eval/format/show the '
+    #      'results / save the results) with the argument "--out", "--eval"'
+    #      ', "--format-only", "--show" or "--show-dir"')
 
     if args.eval and args.format_only:
         raise ValueError('--eval and --format_only cannot be both specified')
@@ -256,12 +254,12 @@ def main():
             # hard-code way to remove EvalHook args
             for key in [
                     'interval', 'tmpdir', 'start', 'gpu_collect', 'save_best',
-                    'rule'
+                    'rule','begin','end'
             ]:
                 eval_kwargs.pop(key, None)
             eval_kwargs.update(dict(metric=args.eval, **kwargs))
 
-            dataset.evaluate_miou(outputs, **eval_kwargs)
+            dataset.evaluate_miou(outputs,show_dir=args.show_dir, **eval_kwargs)
 
 
 if __name__ == '__main__':

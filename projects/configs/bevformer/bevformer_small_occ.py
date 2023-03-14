@@ -127,8 +127,6 @@ model = dict(
             col_num_embed=bev_w_,
 
         ),
-
-
     # model training and testing settings
     train_cfg=dict(pts=dict(
         grid_size=[512, 512, 1],

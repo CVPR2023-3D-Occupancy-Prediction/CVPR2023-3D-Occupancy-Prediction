@@ -204,7 +204,13 @@ class NuSceneOcc(NuScenesDataset):
                 continue
             return data
 
-    def evaluate_miou(self, occ_results, runner=None, **eval_kwargs):
+    def evaluate_miou(self, occ_results, runner=None, show_dir=None, **eval_kwargs):
+        if show_dir is not None:
+            if not os.path.exists(show_dir):
+                os.mkdir(show_dir)
+            print('\nSaving output and gt in {} for visualization.'.format(show_dir))
+            begin=eval_kwargs.get('begin',None)
+            end=eval_kwargs.get('end',None)
         self.occ_eval_metrics = Metric_mIoU(
             num_classes=18,
             use_lidar_mask=False,
@@ -223,11 +229,24 @@ class NuSceneOcc(NuScenesDataset):
         print('\nStarting Evaluation...')
         for index, occ_pred in enumerate(tqdm(occ_results)):
             info = self.data_infos[index]
+
             occ_gt = np.load(os.path.join(self.data_root, info['occ_gt_path']))
+            if show_dir is not None:
+                if begin is not None and end is not None:
+                    if index>= begin and index<end:
+                        sample_token = info['token']
+                        save_path = os.path.join(show_dir,str(index).zfill(4))
+                        np.savez_compressed(save_path, pred=occ_pred, gt=occ_gt, sample_token=sample_token)
+                else:
+                    sample_token=info['token']
+                    save_path=os.path.join(show_dir,str(index).zfill(4))
+                    np.savez_compressed(save_path,pred=occ_pred,gt=occ_gt,sample_token=sample_token)
+
+
             gt_semantics = occ_gt['semantics']
             mask_lidar = occ_gt['mask_lidar'].astype(bool)
             mask_camera = occ_gt['mask_camera'].astype(bool)
-            occ_pred = occ_pred.squeeze(dim=0).cpu().numpy().astype(np.uint8)
+            # occ_pred = occ_pred
             self.occ_eval_metrics.add_batch(occ_pred, gt_semantics, mask_lidar, mask_camera)
             if self.eval_fscore:
                 self.fscore_eval_metrics.add_batch(occ_pred, gt_semantics, mask_lidar, mask_camera)
