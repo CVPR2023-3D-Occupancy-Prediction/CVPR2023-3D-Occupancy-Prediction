@@ -204,9 +204,9 @@ Please refer to [getting_started](docs/getting_started.md) for details.
 
 
 ## Challenge Timeline
-- Mar 16, 2023 - Challenge Period Open.
-- May 27, 2023 - Challenge Period End.
-- May 29, 2023 - Finalist Notification.
+- Mar 21, 2023 - Challenge Period Open.
+- Jun 01, 2023 - Challenge Period End.
+- Jun 03, 2023 - Finalist Notification.
 - Jun 10, 2023 - Technical Report Deadline.
 - Jun 12, 2023 - Winner Announcement.
 <p align="right">(<a href="#top">back to top</a>)</p>
