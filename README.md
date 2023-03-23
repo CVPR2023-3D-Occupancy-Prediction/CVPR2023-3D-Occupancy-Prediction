@@ -19,6 +19,7 @@
 - [CVPR 2023 Occupancy Prediction Challenge](#cvpr-2023-occupancy-prediction-challenge)
   - [Introduction](#introduction)
   - [Task Definition](#task-definition)
+    - [Rules for Occupancy Challenge](#rules-for-occupancy-challenge)
   - [Evaluation Metrics](#evaluation-metrics)
     - [mIoU](#miou)
     - [F Score](#f-score)
@@ -40,6 +41,9 @@ Understanding the 3D surroundings including the background stuffs and foreground
 
 ## Task Definition
 Given images from multiple cameras, the goal is to predict the current occupancy state and semantics of each voxel grid in the scene. The voxel state is predicted to be either free or occupied. If a voxel is occupied, its semantic class needs to be predicted, as well. Besides, we also provide a binary observed/unobserved mask for each frame. An observed voxel is defined as an invisible grid in the current camera observation, which is ignored in the evaluation stage.
+
+### Rules for Occupancy Challenge
+We allow using annotations provided in the nuScenes dataset, and the input modality of the model should be camera only. Other public/private datasets are not allowed in the challenge in any form (except ImageNet or MS-COCO pre-trained image backbone).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
