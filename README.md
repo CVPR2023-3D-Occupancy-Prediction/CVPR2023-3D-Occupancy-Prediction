@@ -43,7 +43,7 @@ Understanding the 3D surroundings including the background stuffs and foreground
 Given images from multiple cameras, the goal is to predict the current occupancy state and semantics of each voxel grid in the scene. The voxel state is predicted to be either free or occupied. If a voxel is occupied, its semantic class needs to be predicted, as well. Besides, we also provide a binary observed/unobserved mask for each frame. An observed voxel is defined as an invisible grid in the current camera observation, which is ignored in the evaluation stage.
 
 ### Rules for Occupancy Challenge
-We allow using annotations provided in the nuScenes dataset, and the input modality of the model should be camera only. Other public/private datasets are not allowed in the challenge in any form (except ImageNet or MS-COCO pre-trained image backbone).
+We allow using annotations provided in the nuScenes dataset, and the input modality of the model should be camera only. Other public/private datasets are not allowed in the challenge in any form (except ImageNet or MS-COCO pre-trained image backbone). In order to check the compliance, we will ask the participants to provide technical reports to the challenge committee and the participant will be asked to provide a public talk about the method after winning the award.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
