@@ -41,3 +41,10 @@ python tools/create_data.py occ --root-path ./data/occ3d-nus --out-dir ./data/oc
 You can evaluate the F-score at the same time by adding `--eval_fscore`.
 
 
+### Performance
+
+model name|weight| mIoU | others | barrier | bicycle | bus | car | construction_vehicle | motorcycle | pedestrian | traffic_cone | trailer |  truck | driveable_surface | other_flat | sidewalk | terrain | manmade | vegetation | 
+----|:----------:| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :----------------------: | :---: | :------: | :------: |
+bevformer_base_occ|[Google Drive](https://drive.google.com/file/d/1NyoiosafAmne1qiABeNOPXR-P-y0i7_I/view?usp=share_link)| 23.67 | 5.03 | 38.79 | 9.98 | 34.41 | 41.09 | 13.24 | 16.50 | 18.15 | 17.83 | 18.66 | 27.7 | 48.95 | 27.73 | 29.08 | 25.38 | 15.41 | 14.46 | 
+
+
