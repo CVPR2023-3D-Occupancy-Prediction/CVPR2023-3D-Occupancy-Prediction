@@ -1,2 +1,5 @@
 
 .DS_Store
+data/annotations.json
+data/gts.tar.gz
+data/imgs.tar.gz
