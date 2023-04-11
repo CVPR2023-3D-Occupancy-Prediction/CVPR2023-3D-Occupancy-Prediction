@@ -142,10 +142,21 @@ def vis_nuscene():
 
     ignore_labels = [17, 255]
     vis_voxel_size = 0.4
+
+    # If you want to vis the data file provided in GitHub, use the code below
     file = "data/29796060110c4163b07f06eff4af0753/labels.npz"
     data = np.load(file)
-
     semantics, mask_lidar, mask_camera = data['semantics'], data['mask_lidar'], data['mask_camera']
+
+    # If you want to vis the gt files in mini & trainval, use the code below
+    # file_gt = 'data/gts/scene-0061/0cd661df01aa40c3bb3a773ba86f753a'
+    # mask_camera_file = os.path.join(file_gt, 'mask_camera.npz')
+    # mask_lidar_file = os.path.join(file_gt, 'mask_lidar.npz')
+    # semantics_file = os.path.join(file_gt, 'semantics.npz')
+    # semantics = (np.load(semantics_file))['arr_0']
+    # mask_lidar = (np.load(mask_lidar_file))['arr_0']
+    # mask_camera = (np.load(mask_camera_file))['arr_0']
+
     voxels = semantics
 
     points, labels = voxel2points(voxels, voxelSize, range=point_cloud_range, ignore_labels=ignore_labels)
