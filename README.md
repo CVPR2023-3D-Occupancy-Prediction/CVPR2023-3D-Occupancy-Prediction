@@ -39,6 +39,9 @@ Understanding the 3D surroundings including the background stuffs and foreground
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Changelog
+* April 13: we add visualization code under utils/vis.py. And we add rules about using other datasets as well as future frame. Please take a look at the rule section and strickly follow them.
+
 ## Task Definition
 Given images from multiple cameras, the goal is to predict the current occupancy state and semantics of each voxel grid in the scene. The voxel state is predicted to be either free or occupied. If a voxel is occupied, its semantic class needs to be predicted, as well. Besides, we also provide a binary observed/unobserved mask for each frame. An observed voxel is defined as an invisible grid in the current camera observation, which is ignored in the evaluation stage.
 
