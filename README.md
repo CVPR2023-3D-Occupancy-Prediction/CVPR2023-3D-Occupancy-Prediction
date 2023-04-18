@@ -40,6 +40,7 @@ Understanding the 3D surroundings including the background stuffs and foreground
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Changelog
+* April 18: 🚀 A strong baseline based on [InternImage](https://github.com/OpenGVLab/InternImage) released. Check out [here](https://github.com/OpenGVLab/InternImage/tree/master/autonomous_driving/occupancy_prediction).
 * April 13: we add visualization code under utils/vis.py. And we add rules about using other datasets as well as future frame. Please take a look at the rule section and strickly follow them.
 
 ## Task Definition
