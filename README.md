@@ -230,6 +230,6 @@ To be released.
 
 ## License
 Before using the dataset, you should register on the website and agree to the terms of use of the [nuScenes](https://www.nuscenes.org/nuscenes).
-All code within this repository is under [Apache License 2.0](./LICENSE).
+All code within this repository is under [MIT License](./LICENSE).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
