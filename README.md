@@ -48,7 +48,6 @@ Given images from multiple cameras, the goal is to predict the current occupancy
 
 ### Rules for Occupancy Challenge
 * We allow using annotations provided in the nuScenes dataset, and during inference, the input modality of the model should be camera only. 
-* Other public/private datasets are not allowed in the challenge in any form (except ImageNet or MS-COCO pre-trained image backbone). 
 * No future frame is allowed during inference.
 * In order to check the compliance, we will ask the participants to provide technical reports to the challenge committee and the participant will be asked to provide a public talk about the method after winning the award.
 
