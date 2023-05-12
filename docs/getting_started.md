@@ -60,7 +60,7 @@ Test the baseline model on the test split with 8 GPUs, and generate the npz file
 ### Performance
 
 model name|weight| split |mIoU | others | barrier | bicycle | bus | car | construction_vehicle | motorcycle | pedestrian | traffic_cone | trailer |  truck | driveable_surface | other_flat | sidewalk | terrain | manmade | vegetation | 
-----|:----------:| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :----------------------: | :---: | :------: | :------: |
+----|:----------:| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :----------------------: | :---: | :------: | :------: |
 bevformer_base_occ|[Google Drive](https://drive.google.com/file/d/1NyoiosafAmne1qiABeNOPXR-P-y0i7_I/view?usp=share_link)| val | 23.67 | 5.03 | 38.79 | 9.98 | 34.41 | 41.09 | 13.24 | 16.50 | 18.15 | 17.83 | 18.66 | 27.7 | 48.95 | 27.73 | 29.08 | 25.38 | 15.41 | 14.46 | 
 bevformer_base_occ|[Google Drive](https://drive.google.com/file/d/1NyoiosafAmne1qiABeNOPXR-P-y0i7_I/view?usp=share_link)| test | 23.7 | 10.24 | 36.77 | 11.7 | 29.87 | 38.92 | 10.29 | 22.05 | 16.21 | 14.69 | 27.44 | 23.13 | 48.19 | 33.1 | 29.8 | 17.64 | 19.01 | 13.75 | 
 
