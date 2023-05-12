@@ -118,8 +118,9 @@ def main():
     #      'results / save the results) with the argument "--out", "--eval"'
     #      ', "--format-only", "--show" or "--show-dir"')
 
-    if args.eval and args.format_only:
-        raise ValueError('--eval and --format_only cannot be both specified')
+    if args.format_only:
+        args.eval = False
+        # raise ValueError('--eval and --format_only cannot be both specified')
 
     if args.out is not None and not args.out.endswith(('.pkl', '.pickle')):
         raise ValueError('The output file must be a pkl file.')

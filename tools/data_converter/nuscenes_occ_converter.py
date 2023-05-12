@@ -254,7 +254,9 @@ def _fill_occ_trainval_infos(nusc,
             'ego2global_rotation': pose_record['rotation'],
             'timestamp': sample['timestamp'],
         }
-        info['occ_gt_path'] = occ_sample['gt_path']
+        if 'gt_path' in occ_sample:
+            info['occ_gt_path'] = occ_sample['gt_path']
+
         if sample['next'] == '':
             frame_idx = 0
         else:

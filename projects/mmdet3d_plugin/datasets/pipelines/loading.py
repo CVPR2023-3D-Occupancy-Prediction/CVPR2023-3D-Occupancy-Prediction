@@ -25,13 +25,18 @@ class LoadOccGTFromFile(object):
 
     def __call__(self, results):
         # print(results.keys())
-        occ_gt_path = results['occ_gt_path']
-        occ_gt_path = os.path.join(self.data_root,occ_gt_path)
+        if 'occ_gt_path' in results:
+            occ_gt_path = results['occ_gt_path']
+            occ_gt_path = os.path.join(self.data_root,occ_gt_path)
 
-        occ_labels = np.load(occ_gt_path)
-        semantics = occ_labels['semantics']
-        mask_lidar = occ_labels['mask_lidar']
-        mask_camera = occ_labels['mask_camera']
+            occ_labels = np.load(occ_gt_path)
+            semantics = occ_labels['semantics']
+            mask_lidar = occ_labels['mask_lidar']
+            mask_camera = occ_labels['mask_camera']
+        else:
+            semantics = np.zeros((200,200,16),dtype=np.uint8)
+            mask_lidar = np.zeros((200,200,16),dtype=np.uint8)
+            mask_camera = np.zeros((200, 200, 16), dtype=np.uint8)
 
         results['voxel_semantics'] = semantics
         results['mask_lidar'] = mask_lidar

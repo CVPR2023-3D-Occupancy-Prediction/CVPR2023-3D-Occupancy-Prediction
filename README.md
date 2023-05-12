@@ -29,6 +29,7 @@
     - [Hierarchy](#hierarchy)
     - [Known Issues](#known-issues)
   - [Getting Started](#getting-started)
+  - [Submission](#submission)
   - [Timeline](#challenge-timeline)
   - [Leaderboard](#leaderboard)
   - [License](#license)
@@ -40,6 +41,7 @@ Understanding the 3D surroundings including the background stuffs and foreground
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Changelog
+* May 12: The [evaluation server](https://eval.ai/web/challenges/challenge-page/2045) is finally online! Check out [submission format](#submission) 
 * April 18: 🚀 A strong baseline based on [InternImage](https://github.com/OpenGVLab/InternImage) released. Check out [here](https://github.com/OpenGVLab/InternImage/tree/master/autonomous_driving/occupancy_prediction).
 * April 13: we add visualization code under utils/vis.py. And we add rules about using other datasets as well as future frame. Please take a look at the rule section and strickly follow them.
 
@@ -50,6 +52,11 @@ Given images from multiple cameras, the goal is to predict the current occupancy
 * We allow using annotations provided in the nuScenes dataset, and during inference, the input modality of the model should be camera only. 
 * No future frame is allowed during inference.
 * In order to check the compliance, we will ask the participants to provide technical reports to the challenge committee and the participant will be asked to provide a public talk about the method after winning the award.
+* Every submission provides method information. We encourage publishing code, but do not make it a requirement.
+* Each team can have at most one account on the evaluation server. Users that create multiple accounts to circumvent the rules will be excluded from the challenge.
+* Each team can submit at most three results during the challenge. 
+* Faulty submissions that return an error on Eval AI do not count towards the submission limit.
+* Any attempt to circumvent these rules will result in a permanent ban of the team or company from the challenge.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -64,15 +71,6 @@ $$
 $$
 
 where $TP_c$ , $FP_c$ , and $FN_c$ correspond to the number of true positive, false positive, and false negative predictions for class $c_i$.
-
-### F-Score
-We also measure the F-score as the harmonic mean of the completeness $P_c$ and the accuracy $P_a$.
-
-$$
-    F-score=\left( \frac{P_a^{-1}+P_c^{-1}}{2} \right) ^{-1} ,
-$$
-
-where $P_a$ is the percentage of predicted voxels that are within a distance threshold to the ground truth voxels, and $P_c$ is the percentage of ground truth voxels that are within a distance threshold to the predicted voxels.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -121,7 +119,7 @@ The files mentioned below can also be downloaded via <img src="https://user-imag
 | :---: | :---: | :---: | :---: |
 | mini | [data](https://drive.google.com/drive/folders/1ksWt4WLEqOxptpWH2ZN-t1pjugBhg3ME?usp=share_link) | [data](https://pan.baidu.com/s/1IvOoJONwzKBi32Ikjf8bSA?pwd=5uv6)  | approx. 440M |
 | trainval  | [data](https://drive.google.com/drive/folders/1JObO75iTA2Ge5fa8D3BWC8R7yIG8VhrP?usp=share_link) | [data](https://pan.baidu.com/s/1_4yE0__UDIJS8JtBSB0Bpg?pwd=li5h) | approx. 32G |
-| test | coming soon | coming soon | ~ |
+| test | [data](https://drive.google.com/drive/folders/1hVs2AzSlEePN7QR502d8q7FoAbdJLxx8?usp=share_link) | [data](https://pan.baidu.com/s/1ElTu7i5gjXz3TwE2L0YBQQ?pwd=jstt) | approx. 6G |
 
 * Mini and trainval data contain three parts -- `imgs`, `gts` and `annotations`. The `imgs` datas have the same hierarchy with the image samples in the original nuScenes dataset.
 
@@ -212,10 +210,39 @@ Please refer to [getting_started](docs/getting_started.md) for details.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Submission
+
+### Submission site
+Please submit your result on our [evaluation server](https://eval.ai/web/challenges/challenge-page/2045). The submission rule can be referred to [here](#rules-for-occupancy-challenge)
+
+### Submission format
+We define a standardized 3D occupancy prediction result format that serves as an input to the evaluation code. Results are evaluated for each sample. The 3D occupancy prediction results for a the test evaluation set are stored in a folder. The participant needs to zip the results folder and submit it to the official evaluation server.
+
+The folder structure of the results should be as follows:
+```
+└── results_folder
+    ├── [frame_token].npz
+    └── ...
+```
+The result folder contains .npz files, where each .npz file contains the labels of the voxels for the 3D grids with the shape of [200,200,16]. Pay special attention that each set of predictions in the folder must be a .npz file and named as `[frame_token]`.npz. The `[frame_token]` in `annotations.json` is the same as the `sample_token` in nuscenes. A .npz file contains an array of uint8 values in which each value is the predicted semantic class index of the corresponding grid in the 3D space.
+
+Below is an example of how to save the predictions for a single sample:
+```
+save_path = os.path.join(submission_prefix,'{}.npz'.format(sample_token))
+np.savez_compressed(save_path,occ_pred.astype(np.uint8))
+```
+
+We provide example scripts based on mmdetection3d to generate the submission file, please refer to [getting_started](docs/getting_started.md) for details.
+
+The official evaluation server only accepts a single `*.zip` file; you can zip the results folder as below:
+```
+zip -r occ_submission.zip results_folder
+```
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Challenge Timeline
-- Pending - Challenge Period Open.
-- Jun 01, 2023 - Challenge Period End.
+- May 12, 2023 - Challenge Period Open.
+- Jun 01, 2023 11:59:00 PM CST - Challenge Period End.
 - Jun 03, 2023 - Finalist Notification.
 - Jun 10, 2023 - Technical Report Deadline.
 - Jun 12, 2023 - Winner Announcement.
@@ -223,7 +250,7 @@ Please refer to [getting_started](docs/getting_started.md) for details.
 
 
 ## Leaderboard 
-To be released.
+Please refer to [this link](https://eval.ai/web/challenges/challenge-page/2045/leaderboard).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

@@ -124,7 +124,6 @@ class NuSceneOcc(NuScenesDataset):
         info = self.data_infos[index]
         # standard protocal modified from SECOND.Pytorch
         input_dict = dict(
-            occ_gt_path=info['occ_gt_path'],
             sample_idx=info['token'],
             pts_filename=info['lidar_path'],
             sweeps=info['sweeps'],
@@ -137,6 +136,8 @@ class NuSceneOcc(NuScenesDataset):
             frame_idx=info['frame_idx'],
             timestamp=info['timestamp'] / 1e6,
         )
+        if 'occ_gt_path' in info:
+            input_dict['occ_gt_path'] = info['occ_gt_path']
         lidar2ego_rotation = info['lidar2ego_rotation']
         lidar2ego_translation = info['lidar2ego_translation']
         ego2lidar = transform_matrix(translation=lidar2ego_translation, rotation=Quaternion(lidar2ego_rotation),
@@ -254,6 +255,17 @@ class NuSceneOcc(NuScenesDataset):
         self.occ_eval_metrics.count_miou()
         if self.eval_fscore:
             self.fscore_eval_metrics.count_fscore()
+
+    def format_results(self, occ_results,submission_prefix,**kwargs):
+        if submission_prefix is not None:
+            mmcv.mkdir_or_exist(submission_prefix)
+
+        for index, occ_pred in enumerate(tqdm(occ_results)):
+            info = self.data_infos[index]
+            sample_token = info['token']
+            save_path=os.path.join(submission_prefix,'{}.npz'.format(sample_token))
+            np.savez_compressed(save_path,occ_pred.astype(np.uint8))
+        print('\nFinished.')
 
 
 
