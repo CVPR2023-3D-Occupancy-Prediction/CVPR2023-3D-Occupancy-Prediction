@@ -41,6 +41,7 @@ Understanding the 3D surroundings including the background stuffs and foreground
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Changelog
+* May 16: Note that it is a must to append a correct **email** address and other information to validate your submissions in the [Challenge](https://opendrivelab.com/AD23Challenge.html#rules).❗
 * May 12: The [evaluation server](https://eval.ai/web/challenges/challenge-page/2045) is finally online! Check out [submission format](#submission) 
 * April 18: 🚀 A strong baseline based on [InternImage](https://github.com/OpenGVLab/InternImage) released. Check out [here](https://github.com/OpenGVLab/InternImage/tree/master/autonomous_driving/occupancy_prediction).
 * April 13: we add visualization code under utils/vis.py. And we add rules about using other datasets as well as future frame. Please take a look at the rule section and strickly follow them.
