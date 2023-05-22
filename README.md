@@ -92,7 +92,7 @@ Figure 1. Semantic labels (left), visibility masks in the LiDAR (middle) and the
 | mini            | 404 |
 | train           | 28,130 |
 | val             | 6,019 |
-| test            | 6,006 |
+| test            | 6,008 |
 | cameras         | 6 |
 | voxel size      | 0.4m |
 | range           | [-40m, -40m, -1m, 40m, 40m, 5.4m]|
