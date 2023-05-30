@@ -243,7 +243,7 @@ zip -r occ_submission.zip results_folder
 
 ## Challenge Timeline
 - May 12, 2023 - Challenge Period Open.
-- Jun 01, 2023 11:59:00 PM CST - Challenge Period End.
+- Jun 01, 2023 11:59:00 PM CST(UTC+8) - Challenge Period End.
 - Jun 03, 2023 - Finalist Notification.
 - Jun 10, 2023 - Technical Report Deadline.
 - Jun 12, 2023 - Winner Announcement.
