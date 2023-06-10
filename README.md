@@ -40,7 +40,8 @@ If you use the challenge dataset in your paper, please consider citing OccNet an
 ```
 
 ## Leaderboard 
-Please refer to [this link](https://opendrivelab.com/AD23Challenge.html#Track3).
+Please refer to [this link](https://opendrivelab.com/AD23Challenge.html#Track3). Top 10 at a glance by June 10 2023.
+![teaser](figs/leaderboard-06-10-2023.png)
 
 ## Table of Contents
 - [CVPR 2023 Occupancy Prediction Challenge](#cvpr-2023-occupancy-prediction-challenge)
