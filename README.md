@@ -44,6 +44,7 @@ If you use the challenge dataset in your paper, please consider citing OccNet an
 ## Table of Contents
 - [CVPR 2023 Occupancy Prediction Challenge](#cvpr-2023-occupancy-prediction-challenge)
   - [Introduction](#introduction)
+  - [Leaderboard](#leaderboard)
   - [Task Definition](#task-definition)
     - [Rules for Occupancy Challenge](#rules-for-occupancy-challenge)
   - [Evaluation Metrics](#evaluation-metrics)
@@ -57,8 +58,10 @@ If you use the challenge dataset in your paper, please consider citing OccNet an
   - [Getting Started](#getting-started)
   - [Submission](#submission)
   - [Timeline](#challenge-timeline)
-  - [Leaderboard](#leaderboard)
   - [License](#license)
+
+## Leaderboard 
+Please refer to [this link](https://opendrivelab.com/AD23Challenge.html#Track3).
 
 ## Changelog
 * June 1: Challenge closed! Please refer to the final leaderboard at [here](https://opendrivelab.com/AD23Challenge.html#Track3).
@@ -270,9 +273,6 @@ zip -r occ_submission.zip results_folder
 - Jun 12, 2023 - Winner Announcement.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-## Leaderboard 
-Please refer to [this link](https://opendrivelab.com/AD23Challenge.html#Track3).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
