@@ -20,6 +20,27 @@ Understanding the 3D surroundings including the background stuffs and foreground
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+If you use the challenge dataset in your paper, please consider citing OccNet and Occ3D with the following BibTex:
+```bibtex
+@article{tong2023scene,
+      title={Scene as Occupancy}, 
+      author={Wenwen Tong and Chonghao Sima and Tai Wang and Silei Wu and Hanming Deng and Li Chen and Yi Gu and Lewei Lu and Ping Luo and Dahua Lin and Hongyang Li},
+      year={2023},
+      eprint={2306.02851},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
+
+```bibtex
+@article{tian2023occ3d,
+  title={Occ3D: A Large-Scale 3D Occupancy Prediction Benchmark for Autonomous Driving},
+  author={Tian, Xiaoyu and Jiang, Tao and Yun, Longfei and Wang, Yue and Wang, Yilun and Zhao, Hang},
+  journal={arXiv preprint arXiv:2304.14365},
+  year={2023}
+}
+```
+
 ## Table of Contents
 - [CVPR 2023 Occupancy Prediction Challenge](#cvpr-2023-occupancy-prediction-challenge)
   - [Introduction](#introduction)
