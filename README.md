@@ -18,8 +18,6 @@
 ## Introduction
 Understanding the 3D surroundings including the background stuffs and foreground objects is important for autonomous driving. In the traditional 3D object detection task, a foreground object is represented by the 3D bounding box. However, the geometrical shape of the object is complex, which can not be represented by a simple 3D box, and the perception of the background is absent. The goal of this task is to predict the 3D occupancy of the scene. In this task, we provide a large-scale occupancy benchmark based on the nuScenes dataset. The benchmark is a voxelized representation of the 3D space, and the occupancy state and semantics of the voxel in 3D space are jointly estimated in this task. The complexity of this task lies in the dense prediction of 3D space given the surround-view image.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 If you use the challenge dataset in your paper, please consider citing OccNet and Occ3D with the following BibTex:
 ```bibtex
 @article{tong2023scene,
@@ -40,6 +38,8 @@ If you use the challenge dataset in your paper, please consider citing OccNet an
   year={2023}
 }
 ```
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Table of Contents
 - [CVPR 2023 Occupancy Prediction Challenge](#cvpr-2023-occupancy-prediction-challenge)
