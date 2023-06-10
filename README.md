@@ -15,6 +15,11 @@
 
 </div>
 
+## Introduction
+Understanding the 3D surroundings including the background stuffs and foreground objects is important for autonomous driving. In the traditional 3D object detection task, a foreground object is represented by the 3D bounding box. However, the geometrical shape of the object is complex, which can not be represented by a simple 3D box, and the perception of the background is absent. The goal of this task is to predict the 3D occupancy of the scene. In this task, we provide a large-scale occupancy benchmark based on the nuScenes dataset. The benchmark is a voxelized representation of the 3D space, and the occupancy state and semantics of the voxel in 3D space are jointly estimated in this task. The complexity of this task lies in the dense prediction of 3D space given the surround-view image.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ## Table of Contents
 - [CVPR 2023 Occupancy Prediction Challenge](#cvpr-2023-occupancy-prediction-challenge)
   - [Introduction](#introduction)
@@ -33,12 +38,6 @@
   - [Timeline](#challenge-timeline)
   - [Leaderboard](#leaderboard)
   - [License](#license)
-
-
-## Introduction
-Understanding the 3D surroundings including the background stuffs and foreground objects is important for autonomous driving. In the traditional 3D object detection task, a foreground object is represented by the 3D bounding box. However, the geometrical shape of the object is complex, which can not be represented by a simple 3D box, and the perception of the background is absent. The goal of this task is to predict the 3D occupancy of the scene. In this task, we provide a large-scale occupancy benchmark based on the nuScenes dataset. The benchmark is a voxelized representation of the 3D space, and the occupancy state and semantics of the voxel in 3D space are jointly estimated in this task. The complexity of this task lies in the dense prediction of 3D space given the surround-view image.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Changelog
 * June 1: Challenge closed! Please refer to the final leaderboard at [here](https://opendrivelab.com/AD23Challenge.html#Track3).
