@@ -20,9 +20,9 @@ Understanding the 3D surroundings including the background stuffs and foreground
 
 If you use the challenge dataset in your paper, please consider citing OccNet and Occ3D with the following BibTex:
 ```bibtex
-@article{tong2023scene,
-      title={Scene as Occupancy}, 
-      author={Wenwen Tong and Chonghao Sima and Tai Wang and Silei Wu and Hanming Deng and Li Chen and Yi Gu and Lewei Lu and Ping Luo and Dahua Lin and Hongyang Li},
+@article{sima2023_occnet,
+      title={Scene as Occupancy},
+      author=author={Chonghao Sima and Wenwen Tong and Tai Wang and Li Chen and Silei Wu and Hanming Deng and Yi Gu and Lewei Lu and Ping Luo and Dahua Lin and Hongyang Li},
       year={2023},
       eprint={2306.02851},
       archivePrefix={arXiv},
