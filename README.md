@@ -40,7 +40,12 @@ If you use the challenge dataset in your paper, please consider citing OccNet an
 ```
 
 ## Leaderboard 
-Please refer to [this link](https://opendrivelab.com/AD23Challenge.html#Track3). Top 10 at a glance by June 10 2023.
+
+### 3D Occupancy Prediction Challenge at CVPR 2023 (Server remains `active`)
+Please refer to [this link](https://opendrivelab.com/AD23Challenge.html#Track3). If you wish to add new / modify results to the leaderboard, please drop us an email to <a href="mailto:contact@opendrivelab.com">contact@opendrivelab.com</a>
+- Challenge webiste: [https://opendrivelab.com/AD23Challenge.html](https://opendrivelab.com/AD23Challenge.html)
+  
+Top 10 at a glance by June 10 2023. 
 ![teaser](figs/leaderboard-06-10-2023.png)
 
 ## Table of Contents
@@ -270,7 +275,6 @@ zip -r occ_submission.zip results_folder
 - Jun 03, 2023 - Finalist Notification.
 - Jun 10, 2023 - Technical Report Deadline.
 - Jun 12, 2023 - Winner Announcement.
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
